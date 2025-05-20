@@ -1,0 +1,42 @@
+.header-container {
+    color: white;
+    padding: 15px;
+    margin-top: -80px;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.header-subtitle {
+    font-size:  20px;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+/* NEW: Better visual hierarchy */
+.st-emotion-cache-1v0mbdj {
+    border: 1px solid #3a5a6d;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* NEW: Highlight important buttons */
+.st-emotion-cache-7ym5gk:focus {
+    border-color: #4e79a7 !important;
+    box-shadow: 0 0 0 2px rgba(78,121,167,0.3) !important;
+}
+
+/* NEW: Animate toast notifications */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.stToast {
+    animation: fadeIn 0.3s ease-out;
+}
