@@ -338,9 +338,7 @@ if company_symbol:
                 ])
             )
         )
-        with st.spinner("Rendering interactive chart..."):
-            st.plotly_chart(fig, use_container_width=False)
-            st.success("✅ Chart rendered!")
+        st.plotly_chart(fig, use_container_width=False)
         with st.expander("📚 Signal Reference Guide", expanded=False):
             st.markdown("""
             **Signal Legend:**
