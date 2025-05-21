@@ -342,15 +342,13 @@ if company_symbol:
         )
         df['date'] = pd.to_datetime(df['date'])
         last_data_date = df['date'].max().strftime("%Y-%m-%d")
-
-        st.plotly_chart(fig, use_container_width=False)
-
         if last_updated:
             formatted_time = last_updated.strftime("%Y-%m-%d %H:%M:%S %Z")
             cols = st.columns(2)
             cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
             cols[1].caption(f"📅 Latest data point: {last_data_date}")
             st.toast(f"Data updated at {last_updated.strftime('%H:%M:%S')}", icon="🕒")
+        st.plotly_chart(fig, use_container_width=False)
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
 
