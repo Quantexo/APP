@@ -18,7 +18,7 @@ st.markdown(
     """ <style>
     .stApp {
     background-color: darkslategray;
-    } </style> <div class='header-container'> <div class='header-title'>Quantexo🕵️</div> <div class='header-subtitle'>💰 Advanced Insights for Bold Trades</div> </div>
+    } </style> <div class='header-container'> <div class='header-title'>Quantexo🕵️</div> </div>
     """,
     unsafe_allow_html=True
 )
