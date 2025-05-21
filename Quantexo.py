@@ -98,12 +98,17 @@ def get_sheet_data(symbol, sheet_name="Daily Price"):
         df = df.iloc[:, :7]
         df.columns = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
         
+        # Get current time in Nepal timezone
+        nepal_tz = pytz.timezone('Asia/Kathmandu')
+        last_updated = datetime.now(nepal_tz)
+
         # Filter data based on company symbol
         df['symbol'] = df['symbol'].astype(str).str.strip().str.upper()
-        return df[df['symbol'].str.upper() == symbol.upper()]
+        filtered_df = df[df['symbol'].str.upper() == symbol.upper()]
+        return filtered_df, last_updated
     except Exception as e:
         st.error(f"🔴 Error fetching data: {str(e)}")
-        return pd.DataFrame()
+        return pd.DataFrame(), None
 
 def detect_signals(df):
     results = []
@@ -192,7 +197,7 @@ def detect_signals(df):
 
 if company_symbol:
     sheet_name = "Daily Price"
-    df = get_sheet_data(company_symbol, sheet_name)
+    df, last_updated = get_sheet_data(company_symbol, sheet_name)
 
     if df.empty:
         st.warning(f"No data found for {company_symbol}")
@@ -362,7 +367,15 @@ if company_symbol:
 
             **Note**: This is unofficial data. For official data, please refer to [NEPSE](https://www.nepalstock.com.np/).
             """)
+         df['date'] = pd.to_datetime(df['date'])
+        last_data_date = df['date'].max().strftime("%Y-%m-%d")
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
+        
+    if last_updated:
+        formatted_time = last_updated.strftime("%Y-%m-%d %H:%M:%S %Z")
+        cols = st.columns(2)
+        cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
+        cols[1].caption(f"📅 Latest data point: {last_data_date}")
 else:
     st.info("ℹ👆🏻 Enter a company symbol to get analysed chart 👆🏻")
