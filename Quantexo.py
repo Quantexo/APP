@@ -322,7 +322,7 @@ if company_symbol:
             dragmode="zoom",  # Enable box zoom
             annotations=[
                 dict(
-                    text=f"{company_symbol} <br> Quantexo",
+                    text=f"Quantexo 🕵️ <br> {company_symbol}",
                     xref="paper", yref="paper",
                     x=0.5, y=0.5,
                     xanchor="center", yanchor="middle",
@@ -353,7 +353,7 @@ if company_symbol:
             cols = st.columns(2)
             cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
             cols[1].caption(f"📅 Latest data point: {last_data_date}")
-        
+            st.toast(f"Data updated at {last_updated.strftime('%H:%M:%S')}", icon="🕒")
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
 
