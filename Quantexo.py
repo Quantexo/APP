@@ -367,11 +367,11 @@ if company_symbol:
 
             **Note**: This is unofficial data. For official data, please refer to [NEPSE](https://www.nepalstock.com.np/).
             """)
-         df['date'] = pd.to_datetime(df['date'])
+        df['date'] = pd.to_datetime(df['date'])
         last_data_date = df['date'].max().strftime("%Y-%m-%d")
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
-        
+
     if last_updated:
         formatted_time = last_updated.strftime("%Y-%m-%d %H:%M:%S %Z")
         cols = st.columns(2)
