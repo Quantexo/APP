@@ -305,10 +305,6 @@ if company_symbol:
         fig.update_layout(
             height=800,
             width=1800,
-            config = {'displayModeBar': True, 'displaylogo': False, 'toImageButtonOptions': {
-                'filename': get_custom_filename(company_symbol), 
-                'format': 'png',
-            }},
             plot_bgcolor="darkslategray",
             paper_bgcolor="darkslategray",
             font_color="white",
@@ -356,6 +352,10 @@ if company_symbol:
             cols = st.columns(2)
             cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
             cols[1].caption(f"📅 Latest data point: {last_data_date}")
+        config = {'displayModeBar': True, 'displaylogo': False, 'toImageButtonOptions': {
+                'filename': get_custom_filename(company_symbol), 
+                'format': 'png',
+            }},
         st.plotly_chart(fig, use_container_width=False)
         st.markdown(f"""
         <script>
