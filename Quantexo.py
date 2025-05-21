@@ -171,13 +171,13 @@ def detect_signals(df):
                 df.at[i, 'tag'] = '💣'
         if (
             row['close'] > row['open'] and
-            body > (row['high'] - row['low']) * 0.7 and
+            body > (row['high'] - row['low']) * 0.85 and
             row['volume'] > avg_volume[i] * 2
         ):
             df.at[i, 'tag'] = '🐂'
         if (
             row['open'] > row['close'] and
-            body > (row['high'] - row['low']) * 0.7 and
+            body > (row['high'] - row['low']) * 0.85 and
             row['volume'] > avg_volume[i] * 2
         ):
             df.at[i, 'tag'] = '🐻'
