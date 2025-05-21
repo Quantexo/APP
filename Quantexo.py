@@ -307,7 +307,7 @@ if company_symbol:
             legend=dict(
                 orientation="h",
                 yanchor="top",
-                y=-0.2,  # Adjust this value to move further down if needed
+                y=-0.1,  # Adjust this value to move further down if needed
                 xanchor="center",
                 x=0.5,
                 font=dict(size=14),
