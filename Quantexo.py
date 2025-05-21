@@ -157,14 +157,14 @@ def detect_signals(df):
                     break
         if (
             i >= 10 and
-            row['high'] > max(df['high'].iloc[i - 10:i]) and
+            row['close'] > max(df['high'].iloc[i - 10:i]) and
             row['volume'] > avg_volume[i] * 1.8
         ):
             if not (df['tag'].iloc[i - 8:i] == '💥').any():
                 df.at[i, 'tag'] = '💥'
         if (
             i >= 10 and
-            row['low'] < min(df['low'].iloc[i - 10:i]) and
+            row['close'] < min(df['low'].iloc[i - 10:i]) and
             row['volume'] > avg_volume[i] * 1.8
         ):
             if not (df['tag'].iloc[i - 8:i] == '💣').any():
