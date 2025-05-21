@@ -129,7 +129,7 @@ def detect_signals(df):
             '🟢' not in recent_tags.values
         ):
             df.at[i, 'tag'] = '🟢'
-        elif (
+        if (
             row['open'] > row['close'] and
             row['close'] <= row['low'] + (row['high'] - row['low']) * 0.1 and
             row['volume'] > avg_volume[i] * 2 and
@@ -137,7 +137,7 @@ def detect_signals(df):
             '🔴' not in recent_tags.values
         ):
             df.at[i, 'tag'] = '🔴'
-        elif (
+        if (
             row['close'] > row['open'] and
             row['volume'] > avg_volume[i] * 1.2
         ):
@@ -146,7 +146,7 @@ def detect_signals(df):
                 if candle['close'] < row['open']:
                     df.at[j, 'tag'] = '⛔'
                     break
-        elif (
+        if (
             row['open'] > row['close'] and
             row['volume'] > avg_volume[i] * 1.2
         ):
@@ -155,27 +155,27 @@ def detect_signals(df):
                 if candle['close'] > row['open']:
                     df.at[j, 'tag'] = '🚀'
                     break
-        elif (
+        if (
             i >= 10 and
             row['high'] > max(df['high'].iloc[i - 10:i]) and
             row['volume'] > avg_volume[i] * 1.8
         ):
             if not (df['tag'].iloc[i - 8:i] == '💥').any():
                 df.at[i, 'tag'] = '💥'
-        elif (
+        if (
             i >= 10 and
             row['low'] < min(df['low'].iloc[i - 10:i]) and
             row['volume'] > avg_volume[i] * 1.8
         ):
             if not (df['tag'].iloc[i - 8:i] == '💣').any():
                 df.at[i, 'tag'] = '💣'
-        elif (
+        if (
             row['close'] > row['open'] and
             body > (row['high'] - row['low']) * 0.7 and
             row['volume'] > avg_volume[i] * 2
         ):
             df.at[i, 'tag'] = '🐂'
-        elif (
+        if (
             row['open'] > row['close'] and
             body > (row['high'] - row['low']) * 0.7 and
             row['volume'] > avg_volume[i] * 2
