@@ -293,13 +293,20 @@ if company_symbol:
                     f"{tag_labels.get(tag, tag)}<extra></extra>"
                 )
             ))
-        
+         def get_custom_filename(company_symbol):
+        """Generate a custom filename with timestamp"""
+        nepal_tz = pytz.timezone('Asia/Kathmandu')
+        now = datetime.now(nepal_tz)
+        timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+        return f"{company_symbol}_chart_{timestamp}_Quantexo🕵️"   
+
         # Calculate 20 days ahead of the last date
         last_date = df['date'].max()
         extended_date = last_date + timedelta(days=20)
         fig.update_layout(
             height=800,
             width=1800,
+            to_image_filename=get_custom_filename(company_symbol)
             plot_bgcolor="darkslategray",
             paper_bgcolor="darkslategray",
             font_color="white",
