@@ -73,8 +73,6 @@ with col4:
     col_search, col_scan = st.columns([1,1])
     with col_search:
         search_clicked = st.button("Search")
-    with col_scan:
-        scan_all_clicked = st.button("Scan All")
 
 # --- Priority: Manual Entry Overrides Dropdown ---
 if search_clicked:
@@ -189,7 +187,7 @@ def detect_signals(df):
                 'date': row['date'].strftime('%Y-%m-%d')
             })
     return results
-    
+
 if company_symbol:
     sheet_name = "Daily Price"
     df = get_sheet_data(company_symbol, sheet_name)
