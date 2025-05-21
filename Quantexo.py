@@ -303,7 +303,7 @@ if company_symbol:
             font_color="white",
             xaxis=dict(title="Date", tickangle=-45, showgrid=False, range=[(df['date'].max() - pd.Timedelta(days=365)), extended_date]), #extend x-axis to show space after latest date
             yaxis=dict(title="Price", showgrid=False, zeroline=True, zerolinecolor="gray", autorange=True),
-            margin=dict(l=50, r=50, b=130, t=50),
+            margin=dict(l=50, r=50, b=100, t=50),
             legend=dict(
                 orientation="h",
                 yanchor="top",
