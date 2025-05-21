@@ -305,6 +305,10 @@ if company_symbol:
         fig.update_layout(
             height=800,
             width=1800,
+            config = {'displayModeBar': True, 'displaylogo': False, 'toImageButtonOptions': {
+                'filename': get_custom_filename(company_symbol), 
+                'format': 'png',
+            }}
             plot_bgcolor="darkslategray",
             paper_bgcolor="darkslategray",
             font_color="white",
