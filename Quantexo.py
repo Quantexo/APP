@@ -395,13 +395,13 @@ def show_faqs():
         A: This typically means no strong patterns were detected in the recent price action according to our algorithms.
 
         **Q: How often is the data updated?**  
-        A: End-of-day data is updated daily by 8:00 PM NPT.
+        A: After the end of continuous session, data is updated daily by 3:30 PM NPT.
         """)
 
     with st.expander("📈 Technical Questions"):
         st.markdown("""
         **Q: What's the difference between 🟢 and 🐂 signals?**  
-        A: 🟢 indicates aggressive buying with strong volume, while 🐂 shows particularly large bullish candles (>70% range).
+        A: 🟢 indicates aggressive buying with strong volume, while 🐂 shows particularly large bullish candles (>85% range).
 
         **Q: Why do some signals disappear when I zoom?**  
         A: This is normal chart behavior - signals remain but may be hidden at certain zoom levels.
@@ -410,10 +410,10 @@ def show_faqs():
     with st.expander("💾 Data Questions"):
         st.markdown("""
         **Q: Where does the data come from?**  
-        A: Our Google Sheets aggregation of NEPSE market data.
+        A: Our Google Sheets aggregation of NEPSE market data (Extracted from [NEPSE](https://nepalstock.com/)).
 
         **Q: How can I get historical data?**  
-        A: Currently we provide 1 year of historical data.
+        A: Currently we provide 1.5 year of historical data.
         """)
 if st.sidebar.button("❓ Frequently Asked Questions"):
     show_faqs()
