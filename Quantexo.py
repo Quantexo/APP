@@ -293,12 +293,6 @@ if company_symbol:
                     f"{tag_labels.get(tag, tag)}<extra></extra>"
                 )
             ))
-        def get_custom_filename(company_symbol):
-            """Generate a custom filename with timestamp"""
-            nepal_tz = pytz.timezone('Asia/Kathmandu')
-            now = datetime.now(nepal_tz)
-            timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-            return f"{company_symbol}_chart_{timestamp}_Quantexo🕵️"
         # Calculate 20 days ahead of the last date
         last_date = df['date'].max()
         extended_date = last_date + timedelta(days=20)
@@ -352,40 +346,7 @@ if company_symbol:
             cols = st.columns(2)
             cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
             cols[1].caption(f"📅 Latest data point: {last_data_date}")
-        config = {'displayModeBar': True, 'displaylogo': False, 'toImageButtonOptions': {
-                'filename': get_custom_filename(company_symbol), 
-                'format': 'png',
-            }},
         st.plotly_chart(fig, use_container_width=False)
-        st.markdown(f"""
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {{
-            const button = document.createElement('button');
-            button.innerText = '📸 Custom Snapshot';
-            button.style.cssText = `
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                z-index: 1000;
-                background: #4CAF50;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 4px;
-                cursor: pointer;
-            `;
-            button.onclick = function() {{
-                Plotly.downloadImage(document.querySelector('.plotly-graph-div'), {{
-                    format: 'png',
-                    filename: '{get_custom_filename(company_symbol)}',
-                    height: 800,
-                    width: 1800
-                }});
-            }};
-            document.querySelector('.plotly-graph-div').appendChild(button);
-        }});
-        </script>
-        """, unsafe_allow_html=True)
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
 else:
