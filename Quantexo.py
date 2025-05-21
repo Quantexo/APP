@@ -306,7 +306,7 @@ if company_symbol:
         fig.update_layout(
             height=800,
             width=1800,
-            to_image_filename=get_custom_filename(company_symbol)
+            to_image_filename=get_custom_filename(company_symbol),
             plot_bgcolor="darkslategray",
             paper_bgcolor="darkslategray",
             font_color="white",
