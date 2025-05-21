@@ -376,13 +376,44 @@ def show_legend():
                 """)
 if st.sidebar.button("📚 Signal Reference Guide"):
     show_legend()
+def show_source():
+    with st.expander("ℹ️ About Data Source"):
+        st.markdown("""
+        **Data Source Information:*
+        - **Source**: NEPSE market data via Google Sheets
+        - **Update Frequency**: End-of-trading hour (EOTH) data updated daily by 3:30 PM NPT
+        - **History**: Contains up to 2 year of historical data
+        - **Fields**: Open, High, Low, Close, Volume for all listed companies
+        **Note**: This is official data extracted from [NEPSE](https://nepalstock.com/).
+        """)
+if st.sidebar.button("ℹ️ About Data Source"):
+    show_legend()
+def show_faqs():
+    with st.expander("🔍 General Questions"):
+        st.markdown("""
+        **Q: Why don't I see any signals for my stock?**  
+        A: This typically means no strong patterns were detected in the recent price action according to our algorithms.
 
-with st.expander("ℹ️ About Data Source"):
-    st.markdown("""
-    **Data Source Information:*
-    - **Source**: NEPSE market data via Google Sheets
-    - **Update Frequency**: End-of-trading hour (EOTH) data updated daily by 3:30 PM NPT
-    - **History**: Contains up to 2 year of historical data
-    - **Fields**: Open, High, Low, Close, Volume for all listed companies
-    **Note**: This is official data extracted from [NEPSE](https://nepalstock.com/).
-    """)
+        **Q: How often is the data updated?**  
+        A: End-of-day data is updated daily by 8:00 PM NPT.
+        """)
+
+    with st.expander("📈 Technical Questions"):
+        st.markdown("""
+        **Q: What's the difference between 🟢 and 🐂 signals?**  
+        A: 🟢 indicates aggressive buying with strong volume, while 🐂 shows particularly large bullish candles (>70% range).
+
+        **Q: Why do some signals disappear when I zoom?**  
+        A: This is normal chart behavior - signals remain but may be hidden at certain zoom levels.
+        """)
+
+    with st.expander("💾 Data Questions"):
+        st.markdown("""
+        **Q: Where does the data come from?**  
+        A: Our Google Sheets aggregation of NEPSE market data.
+
+        **Q: How can I get historical data?**  
+        A: Currently we provide 1 year of historical data.
+        """)
+if st.sidebar.button("❓ Frequently Asked Questions"):
+    show_faqs()
