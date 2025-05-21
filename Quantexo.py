@@ -253,7 +253,7 @@ if company_symbol:
                 "🟢 Open: %{customdata[1]:.2f}<br>" +
                 "📈 High: %{customdata[2]:.2f}<br>" +
                 "📉 Low: %{customdata[3]:.2f}<br>" +
-                "💰 LTP: %{customdata[4]:.2f}<br>" +
+                "🔚 LTP: %{customdata[4]:.2f}<br>" +
                 "📊 Point Change: %{customdata[5]:.2f}<extra></extra>"
             )
         ))  
@@ -286,7 +286,7 @@ if company_symbol:
                     "🟢 Open: %{customdata[0]:.2f}<br>" +
                     "📈 High: %{customdata[1]:.2f}<br>" +
                     "📉 Low: %{customdata[2]:.2f}<br>" +
-                    "🔚 Close: %{customdata[3]:.2f}<br>" +
+                    "🔚 LTP: %{customdata[3]:.2f}<br>" +
                     "📊 Point Change: %{customdata[4]:.2f}<br>" +
                     f"{tag_labels.get(tag, tag)}<extra></extra>"
                 )
