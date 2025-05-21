@@ -361,23 +361,27 @@ if company_symbol:
 else:
     st.info("ℹ👆🏻 Enter a company symbol to get analysed chart 👆🏻")
 
-with st.expander("📚 Signal Reference Guide", expanded=False):
-            st.markdown("""
-            **Signal Legend:**
-            - 🟢 Aggressive Buying
-            - 🔴 Aggressive Selling
-            - ⛔ Buyer Absorption  
-            - 🚀 Seller Absorption
-            - 💥 Bullish Breakout
-            - 💣 Bearish Breakdown
-            - 🐂 Bullish POI
-            - 🐻 Bearish POI
-            """)
+def show_legend():
+    with st.expander("📚 Signal Reference Guide", expanded=False):
+                st.markdown("""
+                **Signal Legend:**
+                - 🟢 Aggressive Buying
+                - 🔴 Aggressive Selling
+                - ⛔ Buyer Absorption  
+                - 🚀 Seller Absorption
+                - 💥 Bullish Breakout
+                - 💣 Bearish Breakdown
+                - 🐂 Bullish POI
+                - 🐻 Bearish POI
+                """)
+if st.sidebar.button("📚 Signal Reference Guide"):
+    show_legend()
+
 with st.expander("ℹ️ About Data Source"):
     st.markdown("""
     **Data Source Information:*
     - **Source**: NEPSE market data via Google Sheets
-    - **Update Frequency**: End-of-trading hour (EOTH) data updated daily by 3:330 PM NPT
+    - **Update Frequency**: End-of-trading hour (EOTH) data updated daily by 3:30 PM NPT
     - **History**: Contains up to 2 year of historical data
     - **Fields**: Open, High, Low, Close, Volume for all listed companies
     **Note**: This is official data extracted from [NEPSE](https://nepalstock.com/).
