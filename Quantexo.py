@@ -308,7 +308,7 @@ if company_symbol:
             config = {'displayModeBar': True, 'displaylogo': False, 'toImageButtonOptions': {
                 'filename': get_custom_filename(company_symbol), 
                 'format': 'png',
-            }}
+            }},
             plot_bgcolor="darkslategray",
             paper_bgcolor="darkslategray",
             font_color="white",
