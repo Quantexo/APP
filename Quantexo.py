@@ -345,9 +345,23 @@ if company_symbol:
         )
         df['date'] = pd.to_datetime(df['date'])
         last_data_date = df['date'].max().strftime("%Y-%m-%d")
-        
+
         st.plotly_chart(fig, use_container_width=False)
-        with st.expander("📚 Signal Reference Guide", expanded=False):
+        
+        if last_updated:
+        formatted_time = last_updated.strftime("%Y-%m-%d %H:%M:%S %Z")
+        cols = st.columns(2)
+        cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
+        cols[1].caption(f"📅 Latest data point: {last_data_date}")
+        
+    except Exception as e:
+        st.error(f"⚠️ Processing error: {str(e)}")
+
+    
+else:
+    st.info("ℹ👆🏻 Enter a company symbol to get analysed chart 👆🏻")
+
+with st.expander("📚 Signal Reference Guide", expanded=False):
             st.markdown("""
             **Signal Legend:**
             - 🟢 Aggressive Buying
@@ -370,14 +384,3 @@ if company_symbol:
 
             **Note**: This is unofficial data. For official data, please refer to [NEPSE](https://www.nepalstock.com.np/).
             """)
-        
-    except Exception as e:
-        st.error(f"⚠️ Processing error: {str(e)}")
-
-    if last_updated:
-        formatted_time = last_updated.strftime("%Y-%m-%d %H:%M:%S %Z")
-        cols = st.columns(2)
-        cols[0].caption(f"⏱️ Data fetched: {formatted_time}")
-        cols[1].caption(f"📅 Latest data point: {last_data_date}")
-else:
-    st.info("ℹ👆🏻 Enter a company symbol to get analysed chart 👆🏻")
