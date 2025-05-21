@@ -10,6 +10,15 @@ import plotly.io as pio
 # --- Page Setup ---
 
 st.set_page_config(page_title="Quantexo", layout="wide")
+
+st.markdown(
+    """ <style>
+    .stApp {
+    background-color: darkslategray;
+    } </style>
+    """,
+    unsafe_allow_html=True
+)
        
 # --- SECTOR TO COMPANY MAPPING ---
 sector_to_companies = {
