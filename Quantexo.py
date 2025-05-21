@@ -294,9 +294,9 @@ if company_symbol:
                 )
             ))
         
-        # Calculate 15 days ahead of the last date
+        # Calculate 20 days ahead of the last date
         last_date = df['date'].max()
-        extended_date = last_date + timedelta(days=15)
+        extended_date = last_date + timedelta(days=20)
         fig.update_layout(
             height=800,
             width=1800,
@@ -350,8 +350,6 @@ if company_symbol:
         st.plotly_chart(fig, use_container_width=False)
     except Exception as e:
         st.error(f"⚠️ Processing error: {str(e)}")
-
-    
 else:
     st.info("ℹ👆🏻 Enter a company symbol to get analysed chart 👆🏻")
 
