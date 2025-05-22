@@ -118,7 +118,7 @@ def detect_signals(df):
     for i in range(min(3, len(df)-1), len(df)):
         row = df.iloc[i]
         prev = df.iloc[i - 1]
-        next_candles = df.iloc[i + 1:min(i + 6, len(df))]
+        next_candles = df.iloc[i + 1:min(i + 9, len(df))]
         body = abs(row['close'] - row['open'])
         prev_body = abs(prev['close'] - prev['open'])
         recent_tags = df['tag'].iloc[max(0, i - 9):i]
@@ -191,6 +191,8 @@ def detect_signals(df):
                 'date': row['date'].strftime('%Y-%m-%d')
             })
     return results
+
+
 
 if company_symbol:
     sheet_name = "Daily Price"
