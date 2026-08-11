@@ -90,7 +90,7 @@ else:
 @st.cache_data(ttl=3600)
 def get_sheet_data(symbol, sheet_name="Daily Price"):
     try:
-        sheet_url = f"https://docs.google.com/spreadsheets/d/1Q_En7VGGfifDmn5xuiF-t_02doPpwl4PLzxb4TBCW0Q/export?format=csv&gid=0"  # Using gid=0 for the first sheet
+        sheet_url = f"https://docs.google.com/spreadsheets/d/1wPKeb1m1M5zkiPZtubAXG4MEGZBcHNNw5lTZaP4Ajrc/export?format=csv&gid=0"  # Using gid=0 for the first sheet
         df = pd.read_csv(sheet_url)
         df = df.iloc[:, :7]
         df.columns = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
